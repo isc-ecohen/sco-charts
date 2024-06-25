@@ -170,7 +170,7 @@ externalServicesDeclarations:
     label: Access TotalView UI over Ingress
     description: Access the application UI over an Ingress
 endpoints:
-  - title: TotalView for Asset Management
+  - title: Supply Chain Orchestrator Data Gateway
     icon: bpleditor.png
     group: Business 360
     description: TotalView User Interface
