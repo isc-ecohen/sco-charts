@@ -15,7 +15,7 @@ data:
 {{end}}
 
         [Actions]
-{{ if eq (toString .Values.mirrored) "true" }}
+{{ if eq .Values.mirrored "true" }}
         CreateDatabase:Name=ISCDATAMODEL,Directory=/irissys/data/IRIS/mgr/ISCDATAMODEL,MirrorSetName=IRISMIRROR1,MirrorDBName=iscdatamodel,Seed=/home/irisowner/irisapp/mgr/ISCDATAMODEL
         CreateDatabase:Name=ISCDATACT,Directory=/irissys/data/IRIS/mgr/ISCDATACT,MirrorSetName=IRISMIRROR1,MirrorDBName=iscdatact,Seed=/home/irisowner/irisapp/mgr/ISCDATACT
         CreateDatabase:Name=ISCUNITTESTS,Directory=/irissys/data/IRIS/mgr/ISCUNITTESTS,MirrorSetName=IRISMIRROR1,MirrorDBName=iscunittests,Seed=/home/irisowner/irisapp/mgr/ISCUNITTESTS
@@ -25,15 +25,14 @@ data:
         CreateDatabase:Name=AGGREGATES,Directory=/irissys/data/IRIS/mgr/AGGREGATES,MirrorSetName=IRISMIRROR1,MirrorDBName=aggregates,Seed=/home/irisowner/irisapp/mgr/AGGREGATES
         CreateDatabase:Name=CUSTOMSTAGING,Directory=/irissys/data/IRIS/mgr/CUSTOMSTAGING,MirrorSetName=IRISMIRROR1,MirrorDBName=customstaging,Seed=/home/irisowner/irisapp/mgr/CUSTOMSTAGING
 {{ else }}
-        CreateDatabase:Name=ISCDATAMODEL,Directory=/usr/irissys/mgr/ISCDATAMODEL,Seed=/home/irisowner/irisapp/mgr/ISCDATAMODEL
-        CreateDatabase:Name=ISCDATACT,Directory=/usr/irissys/mgr/ISCDATACT,Seed=/home/irisowner/irisapp/mgr/ISCDATACT
-        CreateDatabase:Name=ISCUNITTESTS,Directory=/usr/irissys/mgr/ISCUNITTESTS
-        CreateDatabase:Name=CUSTOMDATA,Directory=/usr/irissys/mgr/CUSTOMDATA,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA
-        CreateDatabase:Name=CUSTOMCODE,Directory=/usr/irissys/mgr/CUSTOMCODE,Seed=/home/irisowner/irisapp/mgr/CUSTOMCODE
-        CreateDatabase:Name=CUSTOMDATASECONDARY,Directory=/usr/irissys/mgr/CUSTOMDATA/customdatasecondary,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA/customdatasecondary
-        CreateDatabase:Name=CUSTOMDATACT,Directory=/usr/irissys/mgr/CUSTOMDATACT,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATACT
-        CreateDatabase:Name=AGGREGATES,Directory=/usr/irissys/mgr/AGGREGATES,Seed=/home/irisowner/irisapp/mgr/AGGREGATES
-        CreateDatabase:Name=CUSTOMSTAGING,Directory=/usr/irissys/mgr/CUSTOMSTAGING,Seed=/home/irisowner/irisapp/mgr/CUSTOMSTAGING
+        CreateDatabase:Name=ISCDATAMODEL,Directory=/irissys/data/IRIS/mgr/ISCDATAMODEL,Seed=/home/irisowner/irisapp/mgr/ISCDATAMODEL
+        CreateDatabase:Name=ISCDATACT,Directory=/irissys/data/IRIS/mgr/ISCDATACT,Seed=/home/irisowner/irisapp/mgr/ISCDATACT
+        CreateDatabase:Name=ISCUNITTESTS,Directory=/irissys/data/IRIS/mgr/ISCUNITTESTS,Seed=/home/irisowner/irisapp/mgr/ISCUNITTESTS
+        CreateDatabase:Name=CUSTOMDATA,Directory=/irissys/data/IRIS/mgr/CUSTOMDATA,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA
+        CreateDatabase:Name=CUSTOMCODE,Directory=/irissys/data/IRIS/mgr/CUSTOMCODE,Seed=/home/irisowner/irisapp/mgr/CUSTOMCODE
+        CreateDatabase:Name=CUSTOMDATACT,Directory=/irissys/data/IRIS/mgr/CUSTOMDATACT,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATACT
+        CreateDatabase:Name=AGGREGATES,Directory=/irissys/data/IRIS/mgr/AGGREGATES,Seed=/home/irisowner/irisapp/mgr/AGGREGATES
+        CreateDatabase:Name=CUSTOMSTAGING,Directory=/irissys/data/IRIS/mgr/CUSTOMSTAGING,Seed=/home/irisowner/irisapp/mgr/CUSTOMSTAGING
 {{ end }}
 
         CreateNamespace:Name=B360,Globals=CUSTOMDATA,Routines=CUSTOMCODE,Interop=1
@@ -56,7 +55,7 @@ data:
         CreateMapPackage:Namespace=B360,Name=B360.OAuth2.Login,Database=CUSTOMCODE
 
     CSP-merge.ini: |
-{{ if eq (toString .Values.mirrored) "true" }}
+{{ if eq .Values.mirrored "true" }}
         [business360-iris-data-0-0]
         Username=CSPSystem
         Password=]]]U1lT

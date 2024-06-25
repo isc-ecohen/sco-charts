@@ -72,7 +72,7 @@ spec:
         - name: security-config-secret
           mountPath: /etc/config/security
 
-    {{- if eq (toString .Values.mirrored) "true" }}
+    {{- if eq .Values.mirrored "true" }}
     arbiter:
       image: {{ .Values.image.arbiter }}
       updateStrategy:
