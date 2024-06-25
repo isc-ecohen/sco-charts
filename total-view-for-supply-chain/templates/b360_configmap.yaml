@@ -30,6 +30,7 @@ data:
         CreateDatabase:Name=ISCUNITTESTS,Directory=/irissys/data/IRIS/mgr/ISCUNITTESTS,Seed=/home/irisowner/irisapp/mgr/ISCUNITTESTS
         CreateDatabase:Name=CUSTOMDATA,Directory=/irissys/data/IRIS/mgr/CUSTOMDATA,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA
         CreateDatabase:Name=CUSTOMCODE,Directory=/irissys/data/IRIS/mgr/CUSTOMCODE,Seed=/home/irisowner/irisapp/mgr/CUSTOMCODE
+        CreateDatabase:Name=CUSTOMDATASECONDARY,Directory=/usr/irissys/mgr/CUSTOMDATA/customdatasecondary,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA/customdatasecondary
         CreateDatabase:Name=CUSTOMDATACT,Directory=/irissys/data/IRIS/mgr/CUSTOMDATACT,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATACT
         CreateDatabase:Name=AGGREGATES,Directory=/irissys/data/IRIS/mgr/AGGREGATES,Seed=/home/irisowner/irisapp/mgr/AGGREGATES
         CreateDatabase:Name=CUSTOMSTAGING,Directory=/irissys/data/IRIS/mgr/CUSTOMSTAGING,Seed=/home/irisowner/irisapp/mgr/CUSTOMSTAGING
@@ -55,7 +56,7 @@ data:
         CreateMapPackage:Namespace=B360,Name=B360.OAuth2.Login,Database=CUSTOMCODE
 
     CSP-merge.ini: |
-{{ if eq .Values.mirrored "true" }}
+{{ if eq (toString .Values.mirrored) "true" }}
         [business360-iris-data-0-0]
         Username=CSPSystem
         Password=]]]U1lT
