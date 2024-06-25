@@ -1,0 +1,52 @@
+{{- if eq (toString .Values.ui.ingress.enabled) "true" }}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Release.Name }}
+  name: ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    {{- if ne .Values.ui.ingress.tls.clusterIssuer "" }}
+    cert-manager.io/cluster-issuer: {{ .Values.ui.ingress.tls.clusterIssuer }}
+    {{- end }}
+    alb.ingress.kubernetes.io/group.name: sds-cp
+spec:
+  rules:
+  {{- if ne .Values.ui.ingress.hostname "" }}
+  - host: {{ .Values.ui.ingress.hostname }}
+    http:
+  {{- else }}
+  - http:
+  {{- end }}
+      paths:      
+      - pathType: Prefix
+        path: "/csp/sys/auth"
+        backend:
+          service:
+            name: business360-iris-webgateway
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/csp"
+        backend:
+          service:
+            name: business360-iris-webgateway
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: business360-iris-webgateway
+            port:
+              number: 80
+
+    
+  {{- if and (eq (toString .Values.ui.ingress.tlsEnabled) "true") (ne .Values.ui.ingress.hostname "") }}
+  tls:
+  - hosts:
+    - {{ .Values.ui.ingress.hostname }}
+    secretName: {{ .Release.Name }}-tls-cert
+  {{- end }}
+{{- end }}

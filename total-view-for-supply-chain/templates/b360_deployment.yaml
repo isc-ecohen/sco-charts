@@ -1,0 +1,138 @@
+apiVersion: intersystems.com/v1alpha1
+kind: IrisCluster
+metadata:
+  name: business360-iris
+  namespace: {{ .Release.Name }}
+spec:
+  licenseKeySecret:
+    name: {{ .Values.requiredSecrets.irisLicense }}
+  configSource:
+    name: b360-iris-cpf
+  volumes:
+  - name: security-config-secret
+    secret:
+      secretName: b360-security-config-secret
+  topology:
+    data:
+      mirrored: {{.Values.mirrored}}
+      {{- if eq .Values.skaffold true }}
+      image: {{ .Values.b360_backend.image }}
+      {{- else }}
+      image: {{ .Values.image.registry }}/{{ .Values.image.backendRepository }}:{{ .Chart.AppVersion }}
+      {{- end }}
+      compatibilityVersion: {{ .Values.image.ikoCompatibilityVersion }}
+      podTemplate:
+        spec:
+          {{- if .Values.compute.database.nodeTypeSelector }}
+          nodeSelector:
+            sds/node-type: {{ .Values.compute.database.nodeTypeSelector }}
+          {{- end }}
+          resources:
+            requests:
+              cpu: {{ .Values.compute.database.cpu }}
+              memory: {{ .Values.compute.database.memory }}
+          tolerations:
+          - key: sds/select-worker
+            value: select-worker
+            effect: NoSchedule
+          imagePullSecrets:
+          {{- if .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
+          - name: {{ .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
+          {{- end }}
+          env:
+          - name: B360_FILEDIRBASEPATH
+            value: "{{ .Values.fileDirBasePath }}"
+          - name: B360_CONNECTORTMPFILESBASEPATH
+            value: "{{ .Values.connectorTmpFilesBasePath }}"
+          - name: DATALAKE_JDBC_STRING
+            value: "{{ .Values.fsDataLakeDemoJDBCURL }}"
+      updateStrategy:
+        type: RollingUpdate
+      storageDB:
+        resources:
+          requests:
+            storage: {{.Values.storageDB.size}}
+        storageClassName: {{.Values.storageDB.storageClass}}
+      storageWIJ:
+        resources:
+          requests:
+            storage: {{.Values.storageWIJ.size}}
+        storageClassName: {{.Values.storageWIJ.storageClass}}
+      storageJournal1:
+        resources:
+          requests:
+            storage: {{.Values.storageJournal1.size}}
+        storageClassName: {{.Values.storageJournal1.storageClass}}
+      storageJournal2:
+        resources:
+          requests:
+            storage: {{.Values.storageJournal2.size}}
+        storageClassName: {{.Values.storageJournal2.storageClass}}
+      volumeMounts:
+        - name: security-config-secret
+          mountPath: /etc/config/security
+
+    {{- if eq (toString .Values.mirrored) "true" }}
+    arbiter:
+      image: {{ .Values.image.arbiter }}
+      updateStrategy:
+        type: RollingUpdate
+      # preferredZones:
+      #   - zoneN
+    {{- end }}
+
+    webgateway:
+      replicas: 1
+      image: {{ .Values.image.fsRegistry }}/{{ .Values.image.frontendRepository }}:{{ .Values.image.fsVersion }}
+      podTemplate:
+        spec:
+          imagePullSecrets:
+          {{- if .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
+          - name: {{ .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
+          {{- end }}
+          nodeSelector:
+            sds/node-type: sds-cp
+          tolerations:
+          - key: sds/select-sds-cp
+            value: select-sds-cp
+            effect: NoSchedule
+      # The application paths are necessary for the web gateway to authenticate the CSPSystem.
+      # However, this replaces the contents of /etc/apache2/mods-available/CSP.conf, with the IKO default config
+      # This makes us miss out on certain important setings like: Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+      # that are very much present in the original business360.conf
+      applicationPaths:
+        #; All of the IRIS instance's system default applications.
+        #; For Management Portal only, just use '/csp/sys'.
+        #; To support other applications, please add them to this list.
+        - /csp/sys
+        - /csp/broker
+        - /csp/user
+        - /csp/sds
+        - /csp/b360
+        - /api
+        - /isc
+        - /oauth2
+        - /ui
+        - /intersystems/controlplane/v1
+        - /intersystems/controlplane/login
+        - /intersystems/b360
+        - /intersystems/business-scheduler
+        - /intersystems/ccm
+        - /intersystems/common
+        - /intersystems/data-catalog
+        - /intersystems/data-loader
+        - /intersystems/email
+        - /intersystems/public
+        - /intersystems/query-assistant
+        - /intersystems/recipes
+        - /intersystems/recipe-group
+        - /intersystems/schedulable-resource
+        - /intersystems/semantic-search
+        - /intersystems/snapshot
+        - /intersystems/training
+        - /intersystems/stream
+      updateStrategy:
+        type: RollingUpdate
+  serviceTemplate:
+      spec:
+        type: ClusterIP
