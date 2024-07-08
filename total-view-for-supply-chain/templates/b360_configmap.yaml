@@ -56,7 +56,7 @@ data:
         CreateMapPackage:Namespace=B360,Name=B360.OAuth2.Login,Database=CUSTOMCODE
 
     CSP-merge.ini: |
-{{ if eq (toString .Values.mirrored) "true" }}
+{{ if eq .Values.mirrored "true" }}
         [business360-iris-data-0-0]
         Username=CSPSystem
         Password=]]]U1lT
