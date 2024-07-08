@@ -64,7 +64,7 @@ storageLogs:
 
 
 mirrored: false
-# atscaleinstall: true
+atscaleinstall: true
 
 # These are the secret fields needed to successfully deploy.
 # They will be injected by the control plane:
@@ -72,7 +72,7 @@ requiredSecrets:
   irisLicense: ""
   intersystemsContainerRegistrySecret: ""
   initialPasswordHashSecret: security-config-iris-auth-secret
-  # atScaleLicense: at-scale-license-secret
+  atScaleLicense: at-scale-license-secret
 
 autoscaling:
   enabled: false
@@ -150,8 +150,8 @@ designer:
   loadBalancerDNSName: localhost
   hostname: localhost
 
-# atscalejdbc:
-#   port: 11111
+atscalejdbc:
+  port: 11111
 
-# atscalemdx:
-#   port: 10502
+atscalemdx:
+  port: 10502

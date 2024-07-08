@@ -1,14 +1,14 @@
-# {{- if eq (toString .Values.atscaleinstall) "true" }}
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: pvc-atscale-logs
-# spec:
-#   storageClassName: {{.Values.storageData.storageClass}}
-#   #volumeName: pv-atscale-data
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: {{.Values.storageData.size}}
-# {{- end }}
+{{- if eq (toString .Values.atscaleinstall) "true" }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-atscale-logs
+spec:
+  storageClassName: {{.Values.storageData.storageClass}}
+  #volumeName: pv-atscale-data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{.Values.storageData.size}}
+{{- end }}
