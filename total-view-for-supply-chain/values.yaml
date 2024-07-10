@@ -64,7 +64,7 @@ storageLogs:
 
 
 mirrored: false
-atscaleinstall: false
+atscaleinstall: true
 
 # These are the secret fields needed to successfully deploy.
 # They will be injected by the control plane:

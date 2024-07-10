@@ -21,7 +21,6 @@ data:
         CreateDatabase:Name=ISCUNITTESTS,Directory=/irissys/data/IRIS/mgr/ISCUNITTESTS,MirrorSetName=IRISMIRROR1,MirrorDBName=iscunittests,Seed=/home/irisowner/irisapp/mgr/ISCUNITTESTS
         CreateDatabase:Name=CUSTOMDATA,Directory=/irissys/data/IRIS/mgr/CUSTOMDATA,MirrorSetName=IRISMIRROR1,MirrorDBName=customdata,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA
         CreateDatabase:Name=CUSTOMCODE,Directory=/irissys/data/IRIS/mgr/CUSTOMCODE,MirrorSetName=IRISMIRROR1,MirrorDBName=customcode,Seed=/home/irisowner/irisapp/mgr/CUSTOMCODE
-        CreateDatabase:Name=CUSTOMDATASECONDARY,Directory=/irissys/data/IRIS/mgr/CUSTOMDATA/customdatasecondary,MirrorSetName=IRISMIRROR1,MirrorDBName=customdatact/customdatasecondary,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATA/customdatasecondary
         CreateDatabase:Name=CUSTOMDATACT,Directory=/irissys/data/IRIS/mgr/CUSTOMDATACT,MirrorSetName=IRISMIRROR1,MirrorDBName=customdatact,Seed=/home/irisowner/irisapp/mgr/CUSTOMDATACT
         CreateDatabase:Name=AGGREGATES,Directory=/irissys/data/IRIS/mgr/AGGREGATES,MirrorSetName=IRISMIRROR1,MirrorDBName=aggregates,Seed=/home/irisowner/irisapp/mgr/AGGREGATES
         CreateDatabase:Name=CUSTOMSTAGING,Directory=/irissys/data/IRIS/mgr/CUSTOMSTAGING,MirrorSetName=IRISMIRROR1,MirrorDBName=customstaging,Seed=/home/irisowner/irisapp/mgr/CUSTOMSTAGING
