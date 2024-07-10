@@ -42,7 +42,7 @@ spec:
           {{- if eq .Values.skaffold true }}
           image: {{ .Values.b360_aa.image }}
           {{- else }}
-          image: "{{  .Values.image.fsRegistry }}/{{ .Values.image.adaptiveAnalyticsRepository }}:{{ .Values.image.fsVersion }}"
+          image: "{{ .Values.image.fsRegistry }}/{{ .Values.image.adaptiveAnalyticsRepository }}:{{ .Values.image.fsVersion }}"
           {{- end }}
           env:
             - name: ATSCALE_LB_DNS_NAME
