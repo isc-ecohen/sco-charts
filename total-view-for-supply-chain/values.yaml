@@ -21,7 +21,7 @@ image:
   pullPolicy: IfNotPresent
   fsVersion: "2.8.0"
   ikoCompatibilityVersion: "2023.3.0"
-  arbiter: containers.intersystems.com/intersystems/arbiter:2023.3
+  arbiter: irepo.intersystems.com/intersystems/arbiter:2023.3
 
 b360_frontend_dev:
   image: irepo.intersystems.com/sds-docker-dev/totalview:frontend

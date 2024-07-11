@@ -12,7 +12,7 @@ sections:
       - field: atscaleinstall
         type: boolean
         label: Install AtScale
-        help: If you disable this, AtScale won't be deployed as a part of your solution
+        help: When deployed, 'Update Service' to fix AtScale
         value: "false"
 endpointDependencies:
  - dependency: jdbc
@@ -181,11 +181,11 @@ endpoints:
     visibility: external
     presentation: link
     externalService: ingress
-  - title: Getting Started
+  - title: Documentation
     group: Documentation
-    description: Learn more about...
+    description: Learn more about InterSystems Data Fabric Studio
     type: browsing
-    url: https://gettingstarted.intersystems.com
+    url: https://docs.intersystems.com/datafabric/csp/docbook/DocBook.UI.Page.cls
     contexts:
       - catalog
       - documentation

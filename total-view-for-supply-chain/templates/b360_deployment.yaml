@@ -40,6 +40,10 @@ spec:
           - name: {{ .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
           {{- end }}
           env:
+          - name: TV_ENCRYPTION_MODE
+            value: "INSECURE"
+          - name: ENCRYPTION_KEY_FOLDER
+            value: "/irissys/journal2/encryptionkeys"
           - name: B360_FILEDIRBASEPATH
             value: "{{ .Values.fileDirBasePath }}"
           - name: B360_CONNECTORTMPFILESBASEPATH
@@ -83,7 +87,15 @@ spec:
 
     webgateway:
       replicas: 1
+      {{- if eq .Values.skaffold true }}
+      {{- if eq .Values.deploymentMode "dev" }}
+      image: {{ .Values.b360_frontend_dev.image }}:{{ .Chart.AppVersion }}
+      {{- else }}
+      image: {{ .Values.b360_frontend.image }}
+      {{- end }}
+      {{- else }}
       image: {{ .Values.image.fsRegistry }}/{{ .Values.image.frontendRepository }}:{{ .Values.image.fsVersion }}
+      {{- end }}
       podTemplate:
         spec:
           imagePullSecrets:
