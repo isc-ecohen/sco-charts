@@ -87,15 +87,7 @@ spec:
 
     webgateway:
       replicas: 1
-      {{- if eq .Values.skaffold true }}
-      {{- if eq .Values.deploymentMode "dev" }}
-      image: {{ .Values.b360_frontend_dev.image }}:{{ .Chart.AppVersion }}
-      {{- else }}
-      image: {{ .Values.b360_frontend.image }}
-      {{- end }}
-      {{- else }}
       image: {{ .Values.image.fsRegistry }}/{{ .Values.image.frontendRepository }}:{{ .Values.image.fsVersion }}
-      {{- end }}
       podTemplate:
         spec:
           imagePullSecrets:
