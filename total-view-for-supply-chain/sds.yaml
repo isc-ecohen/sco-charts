@@ -13,7 +13,7 @@ sections:
         type: boolean
         label: Install AtScale
         help: When deployed, 'Update Service' to fix AtScale
-        value: "false"
+        value: "true"
 endpointDependencies:
  - dependency: jdbc
    endpointType: intersystems-iris-jdbc
