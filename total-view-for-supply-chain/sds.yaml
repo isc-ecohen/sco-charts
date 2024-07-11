@@ -12,7 +12,7 @@ sections:
       - field: atscaleinstall
         type: boolean
         label: Install AtScale
-        help: When deployed, 'Update Service' to fix AtScale
+        help: When deployed, 'Update Service' to fix AtScale blah blah test
         value: "true"
 endpointDependencies:
  - dependency: jdbc
