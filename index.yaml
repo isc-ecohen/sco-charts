@@ -7,7 +7,7 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.482161-04:00"
+    created: "2024-07-11T13:31:28.735032-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
     digest: b493d816ae9cf014c4b3030da3b9d4a4fd735302ecb6995836b6759a4d515eef
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
@@ -22,7 +22,7 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.481349-04:00"
+    created: "2024-07-11T13:31:28.734564-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
     digest: e1bedc580ba0809e5c66aadb12794ad61554b90a9a37c00edd31b42090463fb8
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
@@ -37,7 +37,7 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.480432-04:00"
+    created: "2024-07-11T13:31:28.7341-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
     digest: f538e47ce76b55d9b62a354c6d1239bd62fc456a18ef6984ebe1439ab15cc0a2
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
@@ -52,7 +52,7 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.479622-04:00"
+    created: "2024-07-11T13:31:28.733439-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
     digest: 0f602f97ba9fe0d585a8554f0d064b6db34f6838e3bc765c2c9b1fdefe5ae82a
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
@@ -67,7 +67,7 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.478779-04:00"
+    created: "2024-07-11T13:31:28.732933-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
     digest: b5502fd9fc2e0c84895f07244e21a54e2d450c59b573e155415980a05210b28b
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
@@ -82,13 +82,13 @@ entries:
       intersystems/sds-title: Supply Chain Orchestrator Data Gateway
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2024-07-11T13:10:12.477823-04:00"
+    created: "2024-07-11T13:31:28.732438-04:00"
     description: Use this service to deploy the Supply Chain Orchestrator Data Gateway
-    digest: e2e3375f1b3d41ef376003003d0603eec11bd8323e5da77720b1de3ed5083ad0
+    digest: 9d867e68f76f699bd06dfaf531025543e68d2a020f1417be82b359d820b5566f
     icon: https://isc-ecohen.github.io/sco-charts/total-view-for-supply-chain/icon.png
     name: sco-data-gateway
     type: application
     urls:
     - https://isc-ecohen.github.io/sco-charts/sco-data-gateway-0.2.0.tgz
     version: 0.2.0
-generated: "2024-07-11T13:10:12.476899-04:00"
+generated: "2024-07-11T13:31:28.731728-04:00"
